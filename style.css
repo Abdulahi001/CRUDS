@@ -54,17 +54,39 @@ body{
                     display: flex;
                     gap: 20px;
                     width: 80%;
+                    margin: auto;
                    
-                    small{
+                    #small{
                         margin: 10px 0;
-                       width: 150px;
+                      
                         padding: 10px;
                         background-color: #ca1111;
                         border-radius: 4px;
                         font-size: 16px;
                         font-weight: bold;
-                        color: white;
+                        color: #fff;
                     }
+                    #small::before {
+                        content: 'Total:';
+                    }
+                }
+                button{
+                    width: 100%;
+                    padding: 8px 0;
+                    border-radius: 5px;
+                    border: none;
+                    color: #fff;
+                    font-size: 16px;
+                    background-color: #054705f3 ;
+                    text-transform: capitalize;
+                    letter-spacing: 2px;
+                    transition: .9s ease;
+                    cursor: pointer;
+                }
+                button:hover{
+                    opacity: 0.9;
+                    transform: scale(1.1);
+                   
                 }
     
                 .search{
