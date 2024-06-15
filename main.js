@@ -40,6 +40,9 @@ if(localStorage.product != null) {
 
 
 
+
+
+
 submit.onclick = function () {
     let dataObj = {
         name:name.value,
