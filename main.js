@@ -6,9 +6,8 @@ let name = document.getElementById('name');
 let count = document.getElementById('count');
 let category = document.getElementById('category');
 let submit = document.getElementById('create');
-
-
-
+let popUp = document.getElementById('delete-pop-up');
+popUp.classList.add('hidden')
 
 // get total
 function total() {
@@ -40,28 +39,39 @@ if(localStorage.product != null) {
 
 
 
-submit.onclick = function () {
-    let dataObj = {
-        name:name.value,
-        price:price.value,
-        ads:ads.value,
-        taxes:taxes.value,
-        small:small.innerHTML,
-        count:count.value,
-        category:category.value,
+
+    submit.onclick = function () {
+        let dataObj = {
+            name:name.value,
+            price:price.value,
+            ads:ads.value,
+            taxes:taxes.value,
+            small:small.innerHTML,
+            count:count.value,
+            category:category.value,
+        }
+
+        // count input : hoew many product you are creating in one time
+        if( dataObj.count > 1) {
+            for(let i = 0;i < dataObj.count; i++) {
+                data.push(dataObj)
+            }
+        } else {
+            data.push(dataObj)
+        }
+    
+        
+        localStorage.setItem('product',JSON.stringify(data));
+    
+        clearData()
+        readData()
+        
+    
+    
+    
+        
     }
 
-    data.push(dataObj)
-    localStorage.setItem('product',JSON.stringify(data));
-
-    clearData()
-    readData()
-    
-
-
-
-    
-}
 
 // Clear inputs function
 
@@ -76,6 +86,7 @@ function clearData() {
 }
 
 
+
 // Read Function
 
 function readData() {
@@ -83,21 +94,52 @@ function readData() {
     for(let i = 0; i < data.length; i++) {
         table += `
               <tr>
-                    <td>${i}</td>
+                    <td>${i + 1}</td>
                     <td>${data[i].name}</td>
-                    <td>${data[i].price}</td>
-                    <td>${data[i].ads}</td>
-                    <td>${data[i].taxes}</td>
-                    <td>${data[i].small}</td>
+                    <td>${data[i].price} $</td>
+                    <td>${data[i].ads} $</td>
+                    <td>${data[i].taxes} $</td>
+                    <td>${data[i].small} $</td>
                     <td>${data[i].category}</td>
-                    <td><button id="update">Update</button></td>
-                    <td><button id="delete">Delete</button></td>
+                    <td><button onclick="deleteData(${i})" id="update">Update</button></td>
+                    <td><button onclick="deleteData(${i})" id="delete">Delete</button></td>
                     </tr>
         
         `
     }
 
-    document.getElementById('tbody').innerHTML = table
+    document.getElementById('tbody').innerHTML = table;
+    let deleteAllDiv = document.getElementById('delete-div')
+
+    if(data.length > 1) {
+        deleteAllDiv.innerHTML = `<button onclick="deleteAll()" id="delete-all">Delete (${data.length})</button> `
+    } else {
+        deleteAllDiv.innerHTML = ''
+    }
 }
 
 readData() 
+
+
+// Delete 
+
+function deleteData(i) {
+    data.splice(i,1);
+    localStorage.product = JSON.stringify(data);
+    readData()
+}
+// Delete all
+
+function deleteAll() {
+    data.splice(0);
+    localStorage.clear()
+    readData()
+}
+let deleteAllBtn = document.getElementById('delete-all');
+deleteAllBtn.onclick = function () {
+  
+}
+
+
+// update
+
