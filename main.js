@@ -55,6 +55,27 @@ submit.onclick = function () {
     }
 
     data.push(dataObj)
-    localStorage.setItem('product',JSON.stringify(data))
+    localStorage.setItem('product',JSON.stringify(data));
+
+    let tBody = document.getElementsByTagName('tbody');
+
+
+for(let i = 0 ; i < count.value; i++) {
+    tBody.innerHTML += `
+    <tr> 
+    <td>${i}</td>
+    <td>${name.value}</td>
+    <td>${price.value}</td>
+    <td>${ads.value}</td>
+    <td>${taxes.value}</td>
+    <td>${small.value}</td>
+    <td>${category.value}</td>
+    <td><button id="update>Update</button></td>
+    <td><button id="delete>Delete</button></td>
+    </tr>
+    `
+
+    
+}
     
 }
