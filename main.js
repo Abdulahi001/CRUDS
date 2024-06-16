@@ -40,9 +40,6 @@ if(localStorage.product != null) {
 
 
 
-
-
-
 submit.onclick = function () {
     let dataObj = {
         name:name.value,
@@ -57,25 +54,50 @@ submit.onclick = function () {
     data.push(dataObj)
     localStorage.setItem('product',JSON.stringify(data));
 
-    let tBody = document.getElementsByTagName('tbody');
+    clearData()
+    readData()
+    
 
 
-for(let i = 0 ; i < count.value; i++) {
-    tBody.innerHTML += `
-    <tr> 
-    <td>${i}</td>
-    <td>${name.value}</td>
-    <td>${price.value}</td>
-    <td>${ads.value}</td>
-    <td>${taxes.value}</td>
-    <td>${small.value}</td>
-    <td>${category.value}</td>
-    <td><button id="update>Update</button></td>
-    <td><button id="delete>Delete</button></td>
-    </tr>
-    `
 
     
 }
-    
+
+// Clear inputs function
+
+function clearData() {
+    name.value = '';
+    price.value = '';
+    ads.value = '';
+    taxes.value = '';
+    small.innerHTML = '';
+    count.value = '';
+    category.value = '';
 }
+
+
+// Read Function
+
+function readData() {
+    let table = '';
+    for(let i = 0; i < data.length; i++) {
+        table += `
+              <tr>
+                    <td>${i}</td>
+                    <td>${data[i].name}</td>
+                    <td>${data[i].price}</td>
+                    <td>${data[i].ads}</td>
+                    <td>${data[i].taxes}</td>
+                    <td>${data[i].small}</td>
+                    <td>${data[i].category}</td>
+                    <td><button id="update">Update</button></td>
+                    <td><button id="delete">Delete</button></td>
+                    </tr>
+        
+        `
+    }
+
+    document.getElementById('tbody').innerHTML = table
+}
+
+readData() 
