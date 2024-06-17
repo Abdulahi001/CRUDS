@@ -51,15 +51,12 @@ function total() {
 
 // create product
 
-
 let data;
 if(localStorage.product != null) {
     data = JSON.parse(localStorage.product)
 } else {
      data = [];
 }
-
-
 submit.onclick = function () {
                 let dataObj = {
                     name:name.value,
@@ -71,18 +68,22 @@ submit.onclick = function () {
                     category:category.value,
                 }
         
-                // count input : hoew many product you are creating in one time
+              
 
                 if(mood == 'create')  {
-                    mood = 'create'
+                      // count input : hoew many product you are creating in one time
+                  
                     if( dataObj.count > 1) {
                         for(let i = 0;i < dataObj.count; i++) {
                             data.push(dataObj)
                         }
                     } else {
+
+                         
                         data.push(dataObj)
                     }
                 } else {
+                     // update
 
                     data[up] = dataObj
                     submit.innerHTML = 'Create'
@@ -195,8 +196,6 @@ btn2.onclick = function() {
 
 // update
 
-
-
 function updateData(i) {
     name.value = data[i].name;
     price.value = data[i].price;
@@ -219,6 +218,21 @@ function updateData(i) {
      })
     
 }
+
+// search
+
+
+
+let searchMood= 'search by name';
+
+
+
+
+
+
+
+
+
 
 
 
