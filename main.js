@@ -6,8 +6,30 @@ let name = document.getElementById('name');
 let count = document.getElementById('count');
 let category = document.getElementById('category');
 let submit = document.getElementById('create');
+
+//Create and Update mood
+
+let mood = 'create';
+var up;
+
+// Delete all pop-up part
+let shadow = document.getElementById('shadow')
+shadow.style.display = 'none'
 let popUp = document.getElementById('delete-pop-up');
-popUp.classList.add('hidden')
+popUp.style.display = 'none';
+let btn1 = document.getElementById('btn-1');
+let btn2 = document.getElementById('btn-2')
+
+
+//Search part
+let searchInput = document.getElementById('search')
+let searchByName = document.getElementById('by-name');
+let searchByCategory = document.getElementById('by-category');
+
+
+
+
+
 
 // get total
 function total() {
@@ -38,39 +60,63 @@ if(localStorage.product != null) {
 }
 
 
+   
+        submit.onclick = function () {
+            if(submit.innerHTML == 'Create')  {
+                mood = 'create';
+                let dataObj = {
+                    name:name.value,
+                    price:price.value,
+                    ads:ads.value,
+                    taxes:taxes.value,
+                    small:small.innerHTML,
+                    count:count.value,
+                    category:category.value,
+                }
+        
+                // count input : hoew many product you are creating in one time
+                if( dataObj.count > 1) {
+                    for(let i = 0;i < dataObj.count; i++) {
+                        data.push(dataObj)
+                    }
+                } else {
+                    data.push(dataObj)
+                }
+            
+                
+                localStorage.setItem('product',JSON.stringify(data));
+            
+                clearData()
+                readData()
 
+            } else {
+               
+                data[up].name = name.value;
+                data[up].price = price.value;
+                data[up].ads = ads.value;
+                data[up].taxes = taxes.value;
+                data[up].small = small.innerHTML;
+                data[up].category = category.value;
 
-    submit.onclick = function () {
-        let dataObj = {
-            name:name.value,
-            price:price.value,
-            ads:ads.value,
-            taxes:taxes.value,
-            small:small.innerHTML,
-            count:count.value,
-            category:category.value,
-        }
+                console.log(up)
 
-        // count input : hoew many product you are creating in one time
-        if( dataObj.count > 1) {
-            for(let i = 0;i < dataObj.count; i++) {
-                data.push(dataObj)
+                localStorage.product = JSON.stringify(data);
+
+                submit.innerHTML = 'Create'
+                count.style.display = 'block'
+                searchInput.style.display = 'block'
+                searchByName.style.display = 'block'
+                searchByCategory.style.display = 'block';
+
+                readData()
+                clearData()
             }
-        } else {
-            data.push(dataObj)
+       
+         
+            
         }
     
-        
-        localStorage.setItem('product',JSON.stringify(data));
-    
-        clearData()
-        readData()
-        
-    
-    
-    
-        
-    }
+   
 
 
 // Clear inputs function
@@ -101,7 +147,7 @@ function readData() {
                     <td>${data[i].taxes} $</td>
                     <td>${data[i].small} $</td>
                     <td>${data[i].category}</td>
-                    <td><button onclick="deleteData(${i})" id="update">Update</button></td>
+                    <td><button onclick="updateData(${i})" id="update">Update</button></td>
                     <td><button onclick="deleteData(${i})" id="delete">Delete</button></td>
                     </tr>
         
@@ -112,7 +158,7 @@ function readData() {
     let deleteAllDiv = document.getElementById('delete-div')
 
     if(data.length > 1) {
-        deleteAllDiv.innerHTML = `<button onclick="deleteAll()" id="delete-all">Delete (${data.length})</button> `
+        deleteAllDiv.innerHTML = `<button onclick="deleteAllPopup()" id="delete-all">Delete All (${data.length})</button> `
     } else {
         deleteAllDiv.innerHTML = ''
     }
@@ -135,11 +181,53 @@ function deleteAll() {
     localStorage.clear()
     readData()
 }
-let deleteAllBtn = document.getElementById('delete-all');
-deleteAllBtn.onclick = function () {
-  
+
+function deleteAllPopup() {
+    popUp.style.display = 'flex';
+    shadow.style.display = 'block'
+    document.body.style.overflowY = 'hidden'
 }
 
+btn1.onclick = function () {
+    deleteAll();
+     popUp.style.display = 'none';
+    shadow.style.display = 'none'
+    document.body.style.overflowY = 'scroll'
+}
+btn2.onclick = function() {
+     popUp.style.display = 'none';
+    shadow.style.display = 'none'
+    document.body.style.overflowY = 'scroll'
+}
 
 // update
 
+
+
+function updateData(i) {
+    name.value = data[i].name;
+    price.value = data[i].price;
+    ads.value = data[i].ads;
+    taxes.value = data[i].taxes;
+    small.innerHTML = data[i].small;
+    category.value = data[i].category;
+    count.style.display = 'none';
+    submit.innerHTML = 'Update';
+    searchInput.style.display = 'none'
+    searchByName.style.display = 'none'
+    searchByCategory.style.display = 'none';
+
+
+     up = i;
+
+     scroll( {
+        top:'0',
+        'behavior':'smooth'
+     })
+    
+}
+
+
+
+
+ 

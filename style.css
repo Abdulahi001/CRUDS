@@ -10,6 +10,18 @@ body{
 
     font-family: sans-serif;
     background-color: #444;
+    position: relative;
+    
+    #shadow{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #00000057;
+        z-index: 11;
+
+    }
     header{
         width: 80%;
         margin: auto;
@@ -77,15 +89,15 @@ body{
                     border: none;
                     color: #fff;
                     font-size: 16px;
-                    background-color: #054705f3 ;
-                    text-transform: capitalize;
+                    background-color: #054705f3;
                     letter-spacing: 2px;
                     transition: .9s ease;
                     cursor: pointer;
+                    
                 }
                 button:hover{
                     opacity: 0.9;
-                    transform: scale(1.1);
+                    transform: scale(1.04);
                    
                 }
     
@@ -93,45 +105,29 @@ body{
                     display: flex;
                     justify-content: space-around;
                     gap: 120px;
-                    p{
-    
-                        background-color: #054705f3 ;
-                        flex: 1;
-                        text-align: center;
-                        padding: 10px 0;
-                        font-size: 17px;
-                        color: #fff;
-                        
-                        border-radius: 5px;
-                        cursor: pointer;
-                        transition: .9s ease;
-                    }
-                    p:hover{
-                        opacity: 0.9;
-                        transform: scale(1.1);
-                       
-                    }
+              
                  
                 }
         }
 
         #output{
-            position: relative;
+           
 
             #delete-pop-up{
-                position: absolute;
-                top: -150px;
+                position: fixed;
+                top: 50%;
                 left: 50%;
                 transform: translate(-50%,-50%);
-                width: 550px;
-                height: 190px;
+                width: 500px;
+                height: 200px;
                 background-color: #333;
                 color: white;
-                display: flex;
+                
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
                 border-radius: 10px;
+                z-index: 12;
                 p{
                     margin-top: 50px;
                 }
@@ -144,8 +140,8 @@ body{
                     button{
                         width: 80px;
                         border-radius: 5px;
-                        background-color: #fff;
-                        color: #000;
+                        background-color: green;
+                        color: #fff;
                         font-weight: 600;
                     }
                     #btn-1{
@@ -166,7 +162,7 @@ body{
             }
             button:hover{
                 opacity: 0.9;
-                transform: scale(1.1);
+                transform: scale(1.06);
                
             }
             #delete-div{
@@ -200,12 +196,12 @@ body{
                     text-align: center;
                     font-size: 17px;
                     color: #fff;
+                    
                 }
             }
         }
+     
         
     }
-    .hidden{
-        display: none;
-    }
+   
 }
