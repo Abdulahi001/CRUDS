@@ -10,7 +10,7 @@ let submit = document.getElementById('create');
 //Create and Update mood
 
 let mood = 'create';
-var up;
+let up;
 
 // Delete all pop-up part
 let shadow = document.getElementById('shadow')
@@ -60,10 +60,7 @@ if(localStorage.product != null) {
 }
 
 
-   
-        submit.onclick = function () {
-            if(submit.innerHTML == 'Create')  {
-                mood = 'create';
+submit.onclick = function () {
                 let dataObj = {
                     name:name.value,
                     price:price.value,
@@ -75,13 +72,30 @@ if(localStorage.product != null) {
                 }
         
                 // count input : hoew many product you are creating in one time
-                if( dataObj.count > 1) {
-                    for(let i = 0;i < dataObj.count; i++) {
+
+                if(mood == 'create')  {
+                    mood = 'create'
+                    if( dataObj.count > 1) {
+                        for(let i = 0;i < dataObj.count; i++) {
+                            data.push(dataObj)
+                        }
+                    } else {
                         data.push(dataObj)
                     }
                 } else {
-                    data.push(dataObj)
+
+                    data[up] = dataObj
+                    submit.innerHTML = 'Create'
+                    count.style.display = 'block'
+                    searchInput.style.display = 'block'
+                    searchByName.style.display = 'block'
+                    searchByCategory.style.display = 'block';
+                    clearData()
                 }
+              
+
+                
+              
             
                 
                 localStorage.setItem('product',JSON.stringify(data));
@@ -89,28 +103,7 @@ if(localStorage.product != null) {
                 clearData()
                 readData()
 
-            } else {
-               
-                data[up].name = name.value;
-                data[up].price = price.value;
-                data[up].ads = ads.value;
-                data[up].taxes = taxes.value;
-                data[up].small = small.innerHTML;
-                data[up].category = category.value;
-
-                console.log(up)
-
-                localStorage.product = JSON.stringify(data);
-
-                submit.innerHTML = 'Create'
-                count.style.display = 'block'
-                searchInput.style.display = 'block'
-                searchByName.style.display = 'block'
-                searchByCategory.style.display = 'block';
-
-                readData()
-                clearData()
-            }
+           
        
          
             
@@ -209,14 +202,14 @@ function updateData(i) {
     price.value = data[i].price;
     ads.value = data[i].ads;
     taxes.value = data[i].taxes;
-    small.innerHTML = data[i].small;
+    total()
     category.value = data[i].category;
     count.style.display = 'none';
     submit.innerHTML = 'Update';
     searchInput.style.display = 'none'
     searchByName.style.display = 'none'
     searchByCategory.style.display = 'none';
-
+    mood = 'update'
 
      up = i;
 
