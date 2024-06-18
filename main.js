@@ -71,7 +71,7 @@ submit.onclick = function () {
                     && dataObj.count < 200
                 ) {
                     if(mood == 'create')  {
-                        // count input : hoew many product you are creating in one time
+                        // count input : how many product you are creating in one time
                     
                       if( dataObj.count > 1) {
                           for(let i = 0;i < dataObj.count; i++) {
@@ -97,23 +97,10 @@ submit.onclick = function () {
                   }
                   clearData()
                 }
-              
-              
-
-                
-              
-            
-                
                 localStorage.setItem('product',JSON.stringify(data));
                 
-               
                 readData()
-
-           
-       
-         
-            
-        }
+    }
     
    
 
@@ -298,7 +285,33 @@ function getMood(id)
 
 
 
+// Light dark mood
 
+let lightDarkMood = document.getElementById('light-dark-mood')
+let darkLightMood = document.getElementById('dark-light-mood')
+darkLightMood.style.display = 'none'
+let inputs = document.getElementsByTagName('input')
+let table = document.getElementsByTagName('table')
+console.log(inputs)
+
+
+lightDarkMood.onclick = function() {
+    lightDarkMood.style.display = 'none'
+    darkLightMood.style.display = 'block'
+    document.body.style.background = '#fff'
+    
+    
+   
+    
+}
+
+darkLightMood.onclick = function() {
+    darkLightMood.style.display = 'none'
+    lightDarkMood.style.display = 'block'
+    document.body.style.background = '#444'
+   
+     
+}
 
 
 
