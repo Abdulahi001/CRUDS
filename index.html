@@ -28,10 +28,10 @@
             <input type="text" id="category" placeholder="Category">
 
             <button id="create">Create</button>
-                <input type="text" id="search" placeholder="Search">
+                <input onkeyup="searchData(this.value)" type="text" id="search" placeholder="Search">
                 <div class="search"> 
-                <button id="by-name">Search By Name</button>
-                <button id="by-category">Search By Category</button>
+                <button onclick="getMood(this.id)" id="by-name">Search By Name</button>
+                <button onclick="getMood(this.id)" id="by-category">Search By Category</button>
             </div>
         </section>
 
