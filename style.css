@@ -69,7 +69,8 @@ body{
             right: 10px;
             width: 75px;
             height: 30px;
-            background-color: #999;
+            background-color: transparent;
+            border: 1px solid #000;
             border-radius: 20px;
             cursor: pointer;
             #dl-mood{
@@ -99,6 +100,7 @@ body{
                 border: none;
                 background-color: #222;
                 color: white;
+               
                 
                 
             }
@@ -158,7 +160,7 @@ body{
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%,-50%);
-                min-width: 300px;
+                width: 500px;
                 height: 200px;
                 background-color: #333;
                 color: white;
@@ -245,6 +247,23 @@ body{
      
         
     }
+
+    .table-light{
+        tr{
+            th{
+                color: #000;
+            }
+        }
+        #tbody{
+            tr{
+                td{
+                    color: #000;
+                }
+            }
+        }
+      
+    }
+   
    
 }
 
@@ -334,7 +353,54 @@ body{
 
 @media(max-width:610px) {
     body{
+        header{
+            #light-dark-mood{
+                width: 40px;
+                height: 15px;
+                position: absolute;
+                top: 15px;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                #ld-mood{
+                    width: 12px;
+                    height: 12px;
+                    position: absolute;
+                    top: 1.9px;
+                    left: 1px;
+                }
+            }
+            #dark-light-mood{
+                width: 40px;
+                height: 15px;
+                position: absolute;
+                top: 15px;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                #dl-mood{
+                    position: absolute;
+                    top: 1.4px;
+                    right: 1px;
+                  width: 12px;
+                  height: 12px;
+                    
+                }
+            }
+            }
+        
         main{
+            #input{
+                input{
+                    padding: 10px;
+                    margin: 5px 0;
+                }
+                .numbers{
+                    input{
+                        padding: 10px;
+                    margin: 5px 0;
+                    }
+                }
+             
+            }
             #output{
                 table{
                     tr{
@@ -355,6 +421,7 @@ body{
 }
 @media(max-width:450px) {
     body{
+       
         main{
             #input{
                 .search{

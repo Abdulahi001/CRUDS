@@ -289,26 +289,46 @@ function getMood(id)
 
 let lightDarkMood = document.getElementById('light-dark-mood')
 let darkLightMood = document.getElementById('dark-light-mood')
+let inputs = document.querySelectorAll('input')
+let table = document.getElementById('table')
+let  tBody = document.getElementById('tbody')
+let header1 = document.getElementById('header-1')
+let pragraph = document.getElementById('pragraph')
+
 darkLightMood.style.display = 'none'
-let inputs = document.getElementsByTagName('input')
-let table = document.getElementsByTagName('table')
-console.log(inputs)
 
 
 lightDarkMood.onclick = function() {
     lightDarkMood.style.display = 'none'
     darkLightMood.style.display = 'block'
-    document.body.style.background = '#fff'
-    
-    
-   
-    
+    document.body.style.background = '#ffffffb9'
+    table.classList.add('table-light')
+    header1.style.color = '#000'
+    pragraph.style.color = '#000'
+    inputs.forEach((input) => {
+        input.style.background = 'transparent'
+        input.style.border = '1px solid #000'
+        input.style.color = '#000'
+    })
+    popUp.style.background = '#fff'
+    popUp.style.color = '#000'
 }
 
 darkLightMood.onclick = function() {
     darkLightMood.style.display = 'none'
     lightDarkMood.style.display = 'block'
     document.body.style.background = '#444'
+    table.classList.remove('table-light')
+     header1.style.color = '#fff'
+    pragraph.style.color = '#fff'
+    inputs.forEach((input) => {
+        input.style.background = '#222'
+        input.style.color = '#fff'
+         input.style.border = 'none'
+        
+    })
+    popUp.style.background = '#222'
+    popUp.style.color = '#fff'
    
      
 }
