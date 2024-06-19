@@ -402,6 +402,9 @@ body{
              
             }
             #output{
+                #delete-pop-up{
+                    width: 340px;
+                }
                 table{
                     tr{
                         th{
