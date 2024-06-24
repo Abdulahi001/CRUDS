@@ -29,6 +29,7 @@ let byCategory = document.getElementById('by-category')
 
 // get total
 function total() {
+    // if the price input is not empty 
     if(price.value != '') {
         small.style.background = 'green'
         let result = +price.value + +ads.value + +taxes.value;
@@ -46,14 +47,19 @@ function total() {
 }
 
 // create product
-
+// creating the array that is going to store the product data
 let data;
+// if the localstore.product is not empty show all data in it
 if(localStorage.product != null) {
     data = JSON.parse(localStorage.product)
 } else {
+    // if it is empty create empty array
      data = [];
 }
+
+// clicking creating and updating button function
 submit.onclick = function () {
+    // store one product data in object
                 let dataObj = {
                     name:name.value.toLowerCase(),
                     price:price.value,
@@ -64,7 +70,7 @@ submit.onclick = function () {
                     category:category.value.toLowerCase(),
                 }
         
-              
+              //  this condition means don't create or update unless you fill this inputs and count value must be lessthan 200
                 if(name.value != '' 
                     && price.value != ''
                     && category.value != ''
@@ -75,16 +81,16 @@ submit.onclick = function () {
                     
                       if( dataObj.count > 1) {
                           for(let i = 0;i < dataObj.count; i++) {
+                            // pushing the new product created inside the array if the count input value is greater than one(1)
                               data.push(dataObj)
                           }
                       } else {
-  
-                           
+                        // pushing the one new product if the count is not cretet than one(1) 
                           data.push(dataObj)
                       }
                       
                   } else {
-                       // update
+                       // update 
   
                       data[up] = dataObj
                       mood = 'create'
@@ -97,6 +103,8 @@ submit.onclick = function () {
                   }
                   clearData()
                 }
+
+                // putting the data array inside the localstorage
                 localStorage.setItem('product',JSON.stringify(data));
                 
                 readData()
@@ -122,8 +130,11 @@ function clearData() {
 // Read Function
 
 function readData() {
+    // creating a variable that going to hold the new product addid in the table
     let table = '';
+    // loop to the data array
     for(let i = 0; i < data.length; i++) {
+        // putting the data inside the data array in to the variable
         table += `
               <tr>
                     <td>${i + 1}</td>
@@ -139,12 +150,15 @@ function readData() {
         
         `
     }
+    // adding table varieble inside the html inside the tbody
     document.getElementById('tbody').innerHTML = table;
-
+    // calling the delete-div element
     let deleteAllDiv = document.getElementById('delete-div')
+    
     if(data.length > 1) {
+        // if the data inside the data array is greater than 1 put inside the delete-div element delete all button
         deleteAllDiv.innerHTML = `<button onclick="deleteAllPopup()" id="delete-all">Delete All (${data.length})</button> `
-    } else {
+    } else { 
         deleteAllDiv.innerHTML = ''
     }
 
@@ -215,31 +229,40 @@ function updateData(i) {
 // search
 
 
-
+// creating search mood variable
 let searchMood = 'name';
 
-
+// function that we get the mood if it is name or category 
+// this function it work when you click the search-by-name btn or search-by-category btn
+// it holds as a parameter the id of search-by-name btn and search-by-category btn
 function getMood(id) 
  {
     let searchInput = document.getElementById('search') 
+    // it means if you click search-by-name btn
     if(id == 'by-name') {
         searchMood = 'name';
         searchInput.placeholder = 'search by name';
     } else {
+         // else if you click search-by-category btn
         searchMood = 'category'
         searchInput.placeholder = 'search by category';
     }
+    // if you click search-by-name btn or search-by-category btn
     searchInput.focus()
     searchInput.value = '';
     readData()
  }
 
+    // when you write something inside search input it hold as a parameter the value of search input
  function searchData(value) {
+    // creating variable that holds all the products that have the same name or category
     let table = '';
-
+    // it means if you click the search-by-name btn
     if(searchMood == 'name') {
         for(let i = 0; i < data.length; i++) {
+            // if the value of search input is includes to the name of the produts that are inthe array
             if(data[i].name.includes(value.toLowerCase())) {
+                // add the table variable the all products
                 table += `
                 <tr>
                       <td>${i}</td>
@@ -258,7 +281,9 @@ function getMood(id)
         }
     } else {
         for(let i = 0; i < data.length; i++) {
+                 // if the value of search input is includes to the category of the produts that are inthe array
             if(data[i].category.includes(value.toLowerCase())) {
+                // add the table variable the all products
                 table += `
                 <tr>
                       <td>${i}</td>
@@ -277,7 +302,7 @@ function getMood(id)
         }
     }
 
-
+// add the table variable inse the tbody element
     document.getElementById('tbody').innerHTML = table;
 
  }
