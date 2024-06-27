@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>CRUDS</title>
+</head>
+<body>
+    <div id="shadow"></div>
+    <header>
+        <h1 id="header-1">CRUDS</h1>
+        <P id="pragraph">Create read update and search</P>
+
+        <div id="light-dark-mood">
+            <div id="ld-mood"></div>
+        </div>
+
+        <div id="dark-light-mood">
+            <div id="dl-mood"></div>
+        </div>
+    </header>
+   
+    <main>
+      
+        <section id="input">
+            <input type="text" id="name" placeholder="Name">
+            <div class="numbers">
+                <input onkeyup="total()" type="number" id="price" placeholder="Price">
+                <input onkeyup="total()"   type="number" id="ads" placeholder="Ads">
+                <input onkeyup="total()"   type="number" id="taxes" placeholder="Taxes">
+                <small id="small"></small>
+            </div>
+            
+            <input type="number" id="count" placeholder="Count">
+            <input type="text" id="category" placeholder="Category">
+
+            <button id="create">Create</button>
+                <input onkeyup="searchData(this.value)" type="text" id="search" placeholder="Search">
+                <div class="search"> 
+                <button onclick="getMood(this.id)" id="by-name">Search By Name</button>
+                <button onclick="getMood(this.id)" id="by-category">Search By Category</button>
+            </div>
+        </section>
+
+        <section id="output">
+            <div id="delete-pop-up">
+                <p>Are you sure you whan't to delete all</p>
+                <div class="btn">
+                    <button id="btn-1">YES</button>
+                    <button id="btn-2">No</button>
+                </div>
+            </div>
+            <div id="delete-div">
+
+            </div>
+            <table id="table">
+                
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Ads</th>
+                    <th>Taxes</th>
+                    <th>Total</th>
+                    <th>Category</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+             
+                </tr>
+
+                <tbody id="tbody">
+                    
+              
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+
+    <script src="main.js"></script>
+    
+</body>
+</html>

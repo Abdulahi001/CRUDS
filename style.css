@@ -1,0 +1,453 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+
+body{
+
+    font-family: sans-serif;
+    background-color: #444;
+    position: relative;
+    
+    #shadow{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #00000057;
+        z-index: 11;
+
+    }
+    header{
+        width: 80%;
+        margin: auto;
+        text-align: center;
+        min-height: 120px;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        position: relative;
+        h1{
+            font-size: 35px;
+            letter-spacing: 4px;
+            color: white;
+            margin-bottom: 5px;
+            
+        }
+        p{
+            font-size: 18px;
+            color: #ffffffb0;
+            font-weight: 200;
+        }
+        #light-dark-mood{
+            position: absolute;
+            right: 10px;
+            width: 75px;
+            height: 30px;
+            background-color: #999;
+            border-radius: 20px;
+            cursor: pointer;
+            #ld-mood{
+                position: absolute;
+                left: 7px;
+                top: 2px;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+               
+                background-color: #fff;
+                
+            }
+        }
+        #dark-light-mood{
+            position: absolute;
+            right: 10px;
+            width: 75px;
+            height: 30px;
+            background-color: transparent;
+            border: 1px solid #000;
+            border-radius: 20px;
+            cursor: pointer;
+            #dl-mood{
+                position: absolute;
+                right: 7px;
+                top: 2px;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background-color: #666;
+            }
+        }
+
+    }
+    main{
+        width: 80%;
+        margin: auto;
+        display: grid;
+        gap: 20px;
+        #input{
+            input{
+                width: 100%;
+                padding: 15px;
+                margin: 8px 0;
+               outline: none;
+                border-radius: 3px;
+                border: none;
+                background-color: #222;
+                color: white;
+               
+                
+                
+            }
+                .numbers{
+                    display: flex;
+                    gap: 20px;
+                    width: 80%;
+                    margin: auto;
+                   
+                    #small{
+                        margin: 10px 0;
+                      
+                        padding: 10px;
+                        background-color: #ca1111;
+                        border-radius: 4px;
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: #fff;
+                    }
+                    #small::before {
+                        content: 'Total:';
+                    }
+                }
+                button{
+                    width: 100%;
+                    padding: 8px 0;
+                    border-radius: 5px;
+                    border: none;
+                    color: #fff;
+                    font-size: 16px;
+                    background-color: #054705f3;
+                    letter-spacing: 2px;
+                    transition: .9s ease;
+                    cursor: pointer;
+                    
+                }
+                button:hover{
+                    opacity: 0.9;
+                    transform: scale(1.04);
+                   
+                }
+    
+                .search{
+                    display: flex;
+                    justify-content: space-around;
+                    gap: 120px;
+              
+                 
+                }
+        }
+
+        #output{
+           
+
+            #delete-pop-up{
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                width: 500px;
+                height: 200px;
+                background-color: #333;
+                color: white;
+                
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border-radius: 10px;
+                z-index: 12;
+                p{
+                    margin-top: 50px;
+                }
+
+                .btn{
+                    
+                    margin: auto;
+                    display: flex;
+                    gap: 50px;
+                    button{
+                        width: 80px;
+                        border-radius: 5px;
+                        background-color: green;
+                        color: #fff;
+                        font-weight: 600;
+                    }
+                    #btn-1{
+                        background-color: red;
+                    }
+                }
+            }
+            button{
+                width: 100%;
+                padding: 8px 0;
+                border-radius: 5px;
+                border: none;
+                color: #fff;
+                font-size: 16px;
+                background-color: #ca1111;
+                transition: .9s ease;
+                cursor: pointer;
+            }
+            button:hover{
+                opacity: 0.9;
+                transform: scale(1.06);
+               
+            }
+            #delete-div{
+                margin: 0;
+                padding: 0;
+            }
+            #delete-all{
+                    margin-bottom: 20px;
+            }
+
+            table{
+                width: 100%;
+                margin-bottom: 20px;
+                
+                tr{
+                    th{
+                        font-size: 22px;
+                        margin-bottom: 5px;
+                    }
+                  td{
+                    font-size: 20px;
+                    color: #fff;
+                    padding: 7px 0;
+                    #update{
+                        background-color: #054705f3 ;
+                        margin-left: 3px;
+                        width: 90%;
+                    }
+                  }  
+                }
+
+                tbody{
+                    text-align: center;
+                    font-size: 17px;
+                    color: #fff;
+                    
+                }
+            }
+        }
+     
+        
+    }
+
+    .table-light{
+        tr{
+            th{
+                color: #000;
+            }
+        }
+        #tbody{
+            tr{
+                td{
+                    color: #000;
+                }
+            }
+        }
+      
+    }
+   
+   
+}
+
+@media(min-width:1600px) {
+    body{
+        main{
+            #input{
+                input{
+                    padding: 30px 20px;
+                    margin: 20px 0;
+                    font-size: 25px;
+                    border-radius: 15px;
+                }
+                button{
+                    padding: 30px 0;
+                    font-size: 30px;
+                    border-radius: 15px;
+                }
+            }
+            #output{
+                #delete-div{
+                    button{
+                        font-size: 30px;
+                        padding: 20px 0;
+                    }
+                }
+              
+                table{
+                    tr{
+                        th{
+                            font-size: 40px;
+                        }
+                        td{
+                            font-size: 30px;
+                            padding: 20px 0;
+                        }
+                        button{
+                            font-size: 30px;
+                            padding: 20px 0;
+                        }
+                    }
+                }
+            }
+          
+        }
+    }
+}
+
+@media(max-width:900px) {
+    body{
+        main{
+
+            #input{
+                input{
+                    font-size: 12px;
+                }
+                .numbers{
+                    width: 100%;
+                    margin: auto;
+                  
+                }
+                .search{
+                    button{
+                        font-size: 12px;
+                    }
+                }
+            }
+            #output{
+                table{
+                    tr{
+                        th{
+                            font-size: 16px;
+                        }
+                        td{
+                            font-size: 14px;
+                            button{
+                                font-size: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+       
+    }
+}
+
+@media(max-width:610px) {
+    body{
+        header{
+            #light-dark-mood{
+                width: 40px;
+                height: 15px;
+                position: absolute;
+                top: 15px;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                #ld-mood{
+                    width: 12px;
+                    height: 12px;
+                    position: absolute;
+                    top: 1.9px;
+                    left: 1px;
+                }
+            }
+            #dark-light-mood{
+                width: 40px;
+                height: 15px;
+                position: absolute;
+                top: 15px;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                #dl-mood{
+                    position: absolute;
+                    top: 1.4px;
+                    right: 1px;
+                  width: 12px;
+                  height: 12px;
+                    
+                }
+            }
+            }
+        
+        main{
+            #input{
+                input{
+                    padding: 10px;
+                    margin: 5px 0;
+                }
+                .numbers{
+                    input{
+                        padding: 10px;
+                    margin: 5px 0;
+                    }
+                }
+             
+            }
+            #output{
+                #delete-pop-up{
+                    width: 340px;
+                }
+                table{
+                    tr{
+                        th{
+                            font-size: 14px;
+                        }
+                        td{
+                            font-size: 10px;
+                            button{
+                                font-size: 8px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media(max-width:450px) {
+    body{
+       
+        main{
+            #input{
+                .search{
+                    display: flex;
+                    gap: 40px;
+                    button{
+                        font-size: 8px;
+                        
+                    }
+                }
+            }
+            #output{
+                table{
+                    tr{
+                        th{
+                            font-size: 10px;
+                        }
+                        td{
+                            font-size: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
