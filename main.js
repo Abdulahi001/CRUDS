@@ -156,7 +156,7 @@ function readData() {
     let deleteAllDiv = document.getElementById('delete-div')
     
     if(data.length > 1) {
-        // if the data inside the data array is greater than 1 put inside the delete-div element delete all button
+        // if the data inside the data array is greater than 1 put inside the delete-div element delete all button 
         deleteAllDiv.innerHTML = `<button onclick="deleteAllPopup()" id="delete-all">Delete All (${data.length})</button> `
     } else { 
         deleteAllDiv.innerHTML = ''
